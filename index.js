@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const url = "mongodb://localhost:27017/GridDB";
+const url = "mongodb://localhost:27017/GridsDB";
 
 mongoose.connect(url, {useNewURLParser: true});
 
@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}))
+app.use(bodyParser.urlencoded({ extended: true}))
 
 app.use("/gridsAPI", gridRouter);
 
