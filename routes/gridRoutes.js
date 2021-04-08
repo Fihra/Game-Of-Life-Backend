@@ -15,4 +15,22 @@ router.get("/", async (req, res, next) => {
     }
 })
 
+router.post('/new', async (req, res, next) => {
+    console.log(req.body);
+    const grid = new Grid({
+        gridWidth: req.body.gridWidth,
+        gridHeight: req.body.gridHeight,
+        myGrid: req.body.myGrid
+    })
+
+    try{
+        console.log(grid);
+        const newGrid = await grid.save();
+        res.json(newGrid);
+    } catch(error){
+        res.json({message: error})
+    }
+ 
+})
+
 module.exports = router;
